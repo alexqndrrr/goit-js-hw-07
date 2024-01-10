@@ -28,9 +28,29 @@ const images = [
   },
 ];
 
-const galleryList = document.querySelectorAll('.gallery');
+const galleryElement = document.querySelector('.gallery');
 
-const galleryItem = document.createElement('li')
+  galleryElement.style.listStyle = 'none';
+  galleryElement.style.display = 'flex';
+  
+  const galleryItems = images.map(image => {
+    const li = document.createElement('li');
+    li.classList.add('gallery-item');
+    
+    const img = document.createElement('img');
+    img.src = image.url;
+    img.alt = image.alt;
 
-console.log(galleryList);
+    img.style.display = 'flex';
+    img.style.width = '200px';
+    img.style.marginBottom = '20px';
+    img.style.marginRight = '20px';
 
+
+
+
+    li.appendChild(img);
+    return li;
+  });
+
+  galleryElement.append(...galleryItems);
